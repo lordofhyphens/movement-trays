@@ -19,32 +19,33 @@ module trayhole_shadow(h=3, w=25, l=25) {
 module tray(trayw=160, trayl=100, h=3) {
   translate([-2,-2,0])cube([trayw+4,trayl+4,h]);
 }
-module circle_tray(w,l,holedim =[25,25],h=3.5)
+module circle_tray(w,l,holedim =[25,25],h=3.5,do_circle=true)
 {
   tray_width=w*holedim[1];
   tray_length=l*holedim[0];
   difference() {
     tray(w*(holedim[0]+.5),l*(holedim[1]+.5),h);
-  color("red")  translate([0,0,1.5]) {
-        for (i = [0 : 1 : w-1])
-        {  
-          for (j = [0: 1 : l-1])
-          {
-            translate([(holedim[0]*i)+.5*i,(holedim[1]*j)+(.5*j),0])
-              trayhole_shadow(h*.80, w=holedim[1], l=holedim[0]);
-          }
-        }
-    }
-    }
-  translate([0,0,1.5]) {
+    color("red")  translate([0,0,1.5]) {
       for (i = [0 : 1 : w-1])
       {  
         for (j = [0: 1 : l-1])
         {
-          translate([(holedim[0]*i)+.5*i,(holedim[1]*j)+(.5*j),0])trayhole(h*.60,l=holedim[0],w=holedim[1]);
+          translate([(holedim[0]*i)+.5*i,(holedim[1]*j)+(.5*j),0])
+            trayhole_shadow(h*.80, w=holedim[1], l=holedim[0]);
         }
       }
+    }
   }
-
+  if (do_circle == true) 
+    translate([0,0,1.5]) {
+      for (i = [0 : 1 : w-1])
+      {  
+        for (j = [0: 1 : l-1])
+        {
+          translate([(holedim[0]*i)+.5*i,(holedim[1]*j)+(.5*j),0])
+            trayhole(h*.60,l=holedim[0],w=holedim[1]);
+        }
+      }
+    }
 }
 
