@@ -6,7 +6,7 @@ Add the following line:
 
 `use<tray1.scad>`
 
-Now add another line under that one, to call `circle\_tray()`.
+Now add another line under that one, to call `circle_tray()`.
   * The first argument is the number of bases to fit in the width.
   * Second argument is the number of rows of bases. 
   * Third argument is a vector, containing the length and width of the bases. This in mm.
