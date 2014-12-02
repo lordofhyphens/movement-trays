@@ -1,3 +1,5 @@
+This work is in the Public Domain.
+
 How to Use:
 
 Create a new SCAD file in the same directory as tray1.scad 
